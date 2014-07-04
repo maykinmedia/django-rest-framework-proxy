@@ -1,11 +1,18 @@
 import socket
 
 from requests.adapters import HTTPAdapter
-from requests.packages.urllib3.response import HTTPResponse
-from requests.packages.urllib3.exceptions import MaxRetryError
-from requests.packages.urllib3.exceptions import TimeoutError
-from requests.packages.urllib3.exceptions import SSLError as _SSLError
-from requests.packages.urllib3.exceptions import HTTPError as _HTTPError
+try:
+    from requests.packages.urllib3.response import HTTPResponse
+    from requests.packages.urllib3.exceptions import MaxRetryError
+    from requests.packages.urllib3.exceptions import TimeoutError
+    from requests.packages.urllib3.exceptions import SSLError as _SSLError
+    from requests.packages.urllib3.exceptions import HTTPError as _HTTPError
+except ImportError:
+    from urllib3.response import HTTPResponse
+    from urllib3.exceptions import MaxRetryError
+    from urllib3.exceptions import TimeoutError
+    from urllib3.exceptions import SSLError as _SSLError
+    from urllib3.exceptions import HTTPError as _HTTPError
 from requests.exceptions import ConnectionError, Timeout, SSLError
 
 

@@ -1,6 +1,9 @@
 import mimetypes
 
-from requests.packages.urllib3.filepost import choose_boundary
+try:
+    from requests.packages.urllib3.filepost import choose_boundary
+except ImportError:
+    from urllib3.filepost import choose_boundary
 
 
 def generate_boundary():
